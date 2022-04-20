@@ -10,7 +10,7 @@
   - ServiceResult: 通用返回接口
 
 ## e-commerce-mvc-config
-web 层通用配置
+web 层通用配置， 包含全局异常处理，全局返回结果封装等
 
 ## e-commerce-nacos-client
 服务注册发现客户端示例
