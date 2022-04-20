@@ -1,0 +1,28 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /ecommmerce-nacos-client
+
+spring:
+  application:
+    name: e-commerce-nacos-client
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true #如果不想使用Nacos进行服务注册和发现，设置为false即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        namespace: b301db46-6221-4fb4-ae3e-747cd08cf7bc
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 需要开放的端点。默认值只打开 health 和 info 两个端点。
+  endpoint:
+    health:
+      show-details: always
