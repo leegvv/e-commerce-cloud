@@ -16,6 +16,12 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+          user.name: arver
+          user.passsword: arver
+  security:
+    user:
+      name: arver
+      password: arver
   thymeleaf:
     check-template: true
     check-template-location: false
