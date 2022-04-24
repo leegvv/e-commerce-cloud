@@ -1,0 +1,47 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /ecommerce-authority-center
+
+spring:
+  application:
+    name: ecommerce-authority-center
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true #如果不想使用Nacos进行服务注册和发现，设置为false即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        namespace: b301db46-6221-4fb4-ae3e-747cd08cf7bc
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: tr
+    open-in-view: false
+  datasource:
+    # 数据源
+    url: jdbc:mysql://127.0.0.1:3306/commerce?characterEncoding=utf8&connectTimeout=10000&socketTimeout=30000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池
+    hikari:
+      maximum-pool-size: 8
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 需要开放的端点。默认值只打开 health 和 info 两个端点。
+  endpoint:
+    health:
+      show-details: always

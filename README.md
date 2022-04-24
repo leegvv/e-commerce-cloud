@@ -1,8 +1,11 @@
 # e-commerce-cloud
-
+电商微服务
 
 ## e-commerce-admin
 微服务应用监控
+
+## e-commerce-authority-center
+鉴权中心
 
 ## e-commerce-common
 应用公共模块，包含公共类、异常等  
