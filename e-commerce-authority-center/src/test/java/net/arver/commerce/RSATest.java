@@ -1,7 +1,7 @@
 package net.arver.commerce;
 
-import cn.hutool.core.codec.Base64;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -28,8 +28,8 @@ public class RSATest {
         final KeyPair keyPair = keyPairGenerator.generateKeyPair();
         final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-        log.info("private key: [{}]", Base64.encode(privateKey.getEncoded()));
-        log.info("public key: [{}]", Base64.encode(publicKey.getEncoded()));
+        log.info("private key: [{}]", Base64.encodeBase64(privateKey.getEncoded()));
+        log.info("public key: [{}]", Base64.encodeBase64(publicKey.getEncoded()));
     }
 
 }
