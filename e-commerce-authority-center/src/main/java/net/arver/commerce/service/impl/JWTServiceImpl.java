@@ -1,6 +1,5 @@
 package net.arver.commerce.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +8,7 @@ import net.arver.commerce.constant.CommonConstant;
 import net.arver.commerce.dao.UserDao;
 import net.arver.commerce.entity.User;
 import net.arver.commerce.service.JWTService;
+import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.vo.LoginUserInfo;
 import net.arver.commerce.vo.UsernameAndPassword;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ import sun.misc.BASE64Decoder;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
-import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -71,7 +70,7 @@ public class JWTServiceImpl implements JWTService {
 
         return Jwts.builder()
                 // jwt paload --> KV
-                .claim(CommonConstant.JWT_USER_INFO_KEY, JSON.toJSONString(loginUserInfo))
+                .claim(CommonConstant.JWT_USER_INFO_KEY, JsonUtil.toJson(loginUserInfo))
                 // jwt id
                 .setId(UUID.randomUUID().toString())
                 // jwt 过期时间

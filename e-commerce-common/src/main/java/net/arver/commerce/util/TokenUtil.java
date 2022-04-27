@@ -1,6 +1,5 @@
 package net.arver.commerce.util;
 
-import com.alibaba.fastjson.JSON;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -42,7 +41,7 @@ public class TokenUtil {
         }
 
         // 返回 Token 中保存的用户信息
-        return JSON.parseObject(body.get(CommonConstant.JWT_USER_INFO_KEY).toString(), LoginUserInfo.class);
+        return JsonUtil.parse(body.get(CommonConstant.JWT_USER_INFO_KEY).toString(), LoginUserInfo.class);
     }
 
     /**

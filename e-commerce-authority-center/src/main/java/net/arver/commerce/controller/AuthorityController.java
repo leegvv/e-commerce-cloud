@@ -1,12 +1,11 @@
 package net.arver.commerce.controller;
 
-import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.annotation.IgnoreResponseAdvice;
 import net.arver.commerce.service.JWTService;
+import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.vo.JwtToken;
 import net.arver.commerce.vo.UsernameAndPassword;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +41,7 @@ public class AuthorityController {
     @IgnoreResponseAdvice
     @PostMapping("/token")
     public JwtToken token(@RequestBody UsernameAndPassword usernameAndPassword) throws Exception {
-        log.info("request to get token with param: [{}]", JSON.toJSONString(usernameAndPassword));
+        log.info("request to get token with param: [{}]", JsonUtil.toJson(usernameAndPassword));
         return new JwtToken(jwtService.generateToken(usernameAndPassword.getUsername(), usernameAndPassword.getPassword()));
     }
 
@@ -55,7 +54,7 @@ public class AuthorityController {
     @IgnoreResponseAdvice
     @PostMapping("/register")
     public JwtToken register(@RequestBody final UsernameAndPassword usernameAndPassword) throws Exception {
-        log.info("register user with param: [{}]", JSON.toJSONString(usernameAndPassword));
+        log.info("register user with param: [{}]", JsonUtil.toJson(usernameAndPassword));
         return new JwtToken(jwtService.registerUserAndGenerateToken(usernameAndPassword));
     }
 }
