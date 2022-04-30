@@ -39,7 +39,7 @@ public class AuthorityController {
      * @throws Exception
      */
     @IgnoreResponseAdvice
-    @PostMapping("/token")
+    @PostMapping("/login")
     public JwtToken token(@RequestBody UsernameAndPassword usernameAndPassword) throws Exception {
         log.info("request to get token with param: [{}]", JsonUtil.toJson(usernameAndPassword));
         return new JwtToken(jwtService.generateToken(usernameAndPassword.getUsername(), usernameAndPassword.getPassword()));
