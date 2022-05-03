@@ -18,7 +18,6 @@ public class CommonConstant {
             "4eFHnlM2nHNA2G7ZYtj+SXgFHLAsEuGPqIct3vMZzE2y5Kz4QO8Vq9CsbUS8b+gStRRb/9ZW2n5F5Mkp21H/SgVvL0VxXS+VsNyzIZdt" +
             "7IwIDAQAB";
 
-    public static final String JWT_USER_INFO_KEY = "commerce-user";
+    public static final String JWT_USER_INFO_KEY = "e-commerce-user";
 
-    public static final String AUTHORITY_CENTER_SERVICE_ID = "commerce-authority-center";
 }
