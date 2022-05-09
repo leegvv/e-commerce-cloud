@@ -1,6 +1,6 @@
-CREATE TABLE  IF NOT EXISTS `t_user`
+CREATE TABLE IF NOT EXISTS `t_user`
 (
-    `id`          bigint(20)        NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+    `id`          bigint(20)    NOT NULL AUTO_INCREMENT COMMENT '自增主键',
     `username`    varchar(64)   NOT NULL DEFAULT '' COMMENT '用户名',
     `password`    varchar(255)  NOT NULL DEFAULT '' COMMENT 'MD5 加密之后的密码',
     `extra_info`  varchar(1024) NOT NULL DEFAULT '' COMMENT '额外的信息',

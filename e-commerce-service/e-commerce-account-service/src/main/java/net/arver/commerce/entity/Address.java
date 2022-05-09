@@ -3,9 +3,9 @@ package net.arver.commerce.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
+import net.arver.commerce.account.AddressInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
- * User.
+ * Address.
  *
  * @author leegvv
  * @version 1.0.0.0
@@ -31,37 +31,56 @@ import java.util.Objects;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "t_user", schema = "commerce")
+@Table(name = "t_address", schema = "commerce")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private Long id;
-
+    
+    @Column(name = "user_id")
+    private Long userId;
+    
     @Column(name = "username")
     private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "extra_info")
-    private String extraInfo;
-
-    @CreatedBy
-    @Column(name = "creator")
-    private Long creator;
+    
+    @Column(name = "phone")
+    private String phone;
+    
+    @Column(name = "province")
+    private String province;
+    
+    @Column(name = "city")
+    private String city;
+    
+    @Column(name = "address_detail")
+    private String addressDetail;
 
     @CreatedDate
     @Column(name = "create_time")
     private Timestamp createTime;
 
-    @LastModifiedBy
-    @Column(name = "updater")
-    private Long updater;
-
     @LastModifiedDate
     @Column(name = "update_time")
     private Timestamp updateTime;
 
+    /**
+     * 将 AddressInfo 转换为 Address
+     * @param userId
+     * @param addressItem
+     * @return
+     */
+    public static Address to(final Long userId, final AddressInfo.AddressItem addressItem) {
+        final Address address = new Address();
+        BeanUtils.copyProperties(addressItem, address);
+        address.setUserId(userId);
+        return address;
+    }
+
+    public AddressInfo.AddressItem toAddressItem() {
+        final AddressInfo.AddressItem addressItem = new AddressInfo.AddressItem();
+        BeanUtils.copyProperties(this, addressItem);
+        return addressItem;
+    }
 }
