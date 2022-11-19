@@ -1,4 +1,4 @@
-package et.arver.commerce;
+package net.arver.commerce;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
