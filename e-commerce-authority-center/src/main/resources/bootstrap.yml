@@ -13,7 +13,7 @@ spring:
         enabled: true #如果不想使用Nacos进行服务注册和发现，设置为false即可
         server-addr: 127.0.0.1:8848
         # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
-        namespace: 8732980b-d8ff-489b-9d6e-f07f8339390e
+        namespace: e4007a39-dd26-4174-af5d-312d480be2bc
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
@@ -28,7 +28,7 @@ spring:
     open-in-view: false
   datasource:
     # 数据源
-    url: jdbc:mysql://127.0.0.1:3306/commerce?characterEncoding=utf8&connectTimeout=10000&socketTimeout=30000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/e_commerce?characterEncoding=utf8&connectTimeout=10000&socketTimeout=30000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
@@ -45,3 +45,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+arver:
+  response-advice:
+    base-package: net.arver.commerce

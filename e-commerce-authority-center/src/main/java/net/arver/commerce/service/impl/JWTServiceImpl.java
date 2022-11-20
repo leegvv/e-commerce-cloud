@@ -55,6 +55,7 @@ public class JWTServiceImpl implements JWTService {
         final User user = userDao.findByUsernameAndPassword(username, password);
         if (user == null) {
             log.error("can not find user: [{}], [{}]", username, password);
+            return null;
         }
 
         // Token中塞入对象，即JWT中存储的信息，后端拿到这些信息就可以指导是哪个用户在操作

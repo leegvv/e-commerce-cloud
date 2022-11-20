@@ -49,19 +49,19 @@ public class User {
     private String extraInfo;
 
     @CreatedBy
-    @Column(name = "creator")
-    private Long creator;
+    @Column(name = "created_by")
+    private Long createdBy;
 
     @CreatedDate
-    @Column(name = "create_time")
-    private Timestamp createTime;
+    @Column(name = "created_date")
+    private Timestamp createdDate;
 
     @LastModifiedBy
-    @Column(name = "updater")
-    private Long updater;
+    @Column(name = "last_modified_by")
+    private Long lastModifiedBy;
 
     @LastModifiedDate
-    @Column(name = "update_time")
-    private Timestamp updateTime;
+    @Column(name = "lastModifiedDate")
+    private Timestamp lastModifiedDate;
 
 }

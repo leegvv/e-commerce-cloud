@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.util.JsonUtil;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
@@ -59,12 +60,14 @@ public class DynamicRouteServiceImplByNacos {
                     GatewayConfig.DEFAULT_TIMEOUT
             );
             log.info("get current gateway config: [{}]", configInfo);
-            final List<RouteDefinition> definitionList =
-                    JsonUtil.parse(configInfo, new TypeReference<List<RouteDefinition>>() {});
-            if (CollectionUtils.isNotEmpty(definitionList)) {
-                for (final RouteDefinition definition : definitionList) {
-                    log.info("init gateway config: [{}]", definition.toString());
-                    dynamicRouteService.addRouteDefinition(definition);
+            if (StringUtils.isNotBlank(configInfo)) {
+                final List<RouteDefinition> definitionList =
+                        JsonUtil.parse(configInfo, new TypeReference<List<RouteDefinition>>() {});
+                if (CollectionUtils.isNotEmpty(definitionList)) {
+                    for (final RouteDefinition definition : definitionList) {
+                        log.info("init gateway config: [{}]", definition.toString());
+                        dynamicRouteService.addRouteDefinition(definition);
+                    }
                 }
             }
         } catch (final Exception e) {
