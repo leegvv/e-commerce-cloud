@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * WebMvcConfig.
@@ -14,28 +15,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * Description:
  **/
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurationSupport {
+public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
-    protected void addInterceptors(final InterceptorRegistry registry) {
+    public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(new LoginUserInfoInterceptor())
                 .addPathPatterns("/**").order(0);
     }
 
     @Override
-    protected void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/");
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath*:/META-INF/resources/webjars/");
 
         registry.addResourceHandler("swagger-ui/**")
-                .addResourceLocations("classpath:/META_INF/resources/");
+                .addResourceLocations("classpath*:/META_INF/resources/");
 
-        registry.addResourceHandler("doc.html")
-                .addResourceLocations("classpath:/META_INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META_INF/resources/webjars/");
-
-        super.addResourceHandlers(registry);
     }
 }

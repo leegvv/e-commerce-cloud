@@ -41,14 +41,12 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
         } catch (final Exception e) {
             log.error("parse login user info error: [{}]", e.getMessage(), e);
         }
-        if (loginUserInfo == loginUserInfo) {
+        /*if (loginUserInfo == null) {
             throw new ServiceException("获取用户信息错误");
-        }
+        }*/
 
         // 设置当前请求上下文，把用户请求信息填充进去
-
-
-        LoginUserInfoHolder.set(loginUserInfo);
+        AccessContext.set(loginUserInfo);
 
         return true;
     }
@@ -68,8 +66,8 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex) throws Exception {
-        if (LoginUserInfoHolder.get() != null) {
-            LoginUserInfoHolder.remove();
+        if (AccessContext.get() != null) {
+            AccessContext.remove();
         }
     }
 

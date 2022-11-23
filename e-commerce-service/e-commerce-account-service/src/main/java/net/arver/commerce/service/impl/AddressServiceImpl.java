@@ -6,7 +6,7 @@ import net.arver.commerce.account.TableId;
 import net.arver.commerce.dao.AddressDao;
 import net.arver.commerce.entity.Address;
 import net.arver.commerce.exception.ServiceException;
-import net.arver.commerce.filter.LoginUserInfoHolder;
+import net.arver.commerce.filter.AccessContext;
 import net.arver.commerce.service.AddressService;
 import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.vo.LoginUserInfo;
@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
  **/
 @Slf4j
 @Service
-@Transactional
 public class AddressServiceImpl implements AddressService {
 
     private final AddressDao addressDao;
@@ -37,8 +36,9 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public TableId createAddressInfo(final AddressInfo addressInfo) {
-        final LoginUserInfo loginUserInfo = LoginUserInfoHolder.get();
+        final LoginUserInfo loginUserInfo = AccessContext.get();
         final List<Address> addresses = addressInfo.getAddressItems()
                 .stream().map(item -> Address.to(loginUserInfo.getId(), item)).collect(Collectors.toList());
 
@@ -51,7 +51,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressInfo getCurrentAddressInfo() {
-        final LoginUserInfo loginUserInfo = LoginUserInfoHolder.get();
+        final LoginUserInfo loginUserInfo = AccessContext.get();
         final List<Address> addresses = addressDao.findAllByUserId(loginUserInfo.getId());
         final List<AddressInfo.AddressItem> addressItems = addresses.stream()
                 .map(Address::toAddressItem).collect(Collectors.toList());

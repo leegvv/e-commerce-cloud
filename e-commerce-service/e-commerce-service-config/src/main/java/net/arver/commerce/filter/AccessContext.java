@@ -12,7 +12,7 @@ import net.arver.commerce.vo.LoginUserInfo;
  * @version 1.0.0.0
  * Description:
  **/
-public class LoginUserInfoHolder {
+public class AccessContext {
 
     private static final ThreadLocal<LoginUserInfo> LOGIN_USER_INFO = new ThreadLocal<>();
 

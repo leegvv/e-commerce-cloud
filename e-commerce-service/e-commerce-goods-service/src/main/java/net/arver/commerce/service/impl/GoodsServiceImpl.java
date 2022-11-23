@@ -13,7 +13,6 @@ import net.arver.commerce.service.GoodsService;
 import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.vo.PageSimpleGoodsInfo;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,11 +20,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.transaction.Transactional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -140,6 +136,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    @Transactional
     public Boolean deductGoodsInventory(final List<DeductGoodsInventory> deductGoodsInventories) {
         deductGoodsInventories.forEach(item -> {
             if (item.getCount() <= 0) {

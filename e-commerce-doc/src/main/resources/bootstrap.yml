@@ -1,11 +1,11 @@
 server:
-  port: 8010
+  port: 9100
   servlet:
-    context-path: /e-commerce-admin
+    context-path: /e-commerce-doc
 
 spring:
   application:
-    name: e-commerce-admin
+    name: e-commerce-doc
   cloud:
     nacos:
       discovery:
@@ -22,9 +22,6 @@ spring:
     user:
       name: arver
       password: arver
-  thymeleaf:
-    check-template: true
-    check-template-location: false
 
 # 暴露端点
 management:
@@ -39,6 +36,24 @@ management:
     env:
       enabled: true
 
+knife4j:
+  enableAggregation: true
+  nacos:
+    enable: true
+    serviceUrl: http://127.0.0.1:8848/nacos
+    routes:
+      - name: 账户服务
+        swagger-version: 3.0.1
+        serviceName: e-commerce-account-service
+        location: /ecommerce-account-service/v3/api-docs
+        servicePath: /
+        namespaceId: e4007a39-dd26-4174-af5d-312d480be2bc
+      - name: 商品服务
+        swagger-version: 3.0.1
+        serviceName: e-commerce-goods-service
+        location: /ecommerce-goods-service/v3/api-docs
+        servicePath: /
+        namespaceId: e4007a39-dd26-4174-af5d-312d480be2bc
 arver:
   response-advice:
     base-package: net.arver.commerce

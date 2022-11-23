@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
  **/
 @Slf4j
 @Service
-@Transactional
 public class AsyncServiceImpl implements AsyncService{
     private final GoodsDao goodsDao;
 
@@ -53,6 +52,7 @@ public class AsyncServiceImpl implements AsyncService{
      */
     @Async("getAsyncExecutor")
     @Override
+    @Transactional
     public void asyncImportGoods(final List<GoodsInfo> goodsInfos, final String taskId) {
         log.info("async task running taskId: [{}]", taskId);
         final StopWatch watch = StopWatch.createStarted();
