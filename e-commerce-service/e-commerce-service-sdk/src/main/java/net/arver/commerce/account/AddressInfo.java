@@ -1,11 +1,10 @@
 package net.arver.commerce.account;
 
+import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * 用户地址信息.
@@ -30,7 +29,7 @@ public class AddressInfo {
     private List<AddressItem> addressItems;
 
     /**
-     * 用户的单个地址信息
+     * 用户的单个地址信息.
      */
     @Data
     @NoArgsConstructor

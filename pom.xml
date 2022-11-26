@@ -27,6 +27,21 @@
         <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
         <lombok.version>1.18.22</lombok.version>
         <jackson.version>2.13.2</jackson.version>
+        <disable.checks>false</disable.checks>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <!--<rootDir>${session.executionRootDirectory}</rootDir>-->
+        <rootDir>${basedir}</rootDir>
+        <!--<rootDir>${maven.multiModuleProjectDirectory}</rootDir>-->
+        <checkstyle.file>config/checkstyle/checkstyle.xml</checkstyle.file>
+        <checkstyle.header.file>
+            ${rootDirconfig/checkstyle/checkstyle-header.txt
+        </checkstyle.header.file>
+        <checkstyle.suppressions.file>
+            config/checkstyle/checkstyle-suppressions.xml
+        </checkstyle.suppressions.file>
+        <maven-checkstyle-plugin.includeTestSourceDirectory>true</maven-checkstyle-plugin.includeTestSourceDirectory>
+        <maven-checkstyle-plugin.failsOnError>true</maven-checkstyle-plugin.failsOnError>
+        <maven-checkstyle-plugin.failOnViolation>true</maven-checkstyle-plugin.failOnViolation>
     </properties>
 
     <dependencies>
@@ -132,5 +147,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.7.6</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

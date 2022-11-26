@@ -1,10 +1,9 @@
 package net.arver.commerce.constant;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.util.Objects;
 import java.util.stream.Stream;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * GoodsStatus.
@@ -17,10 +16,18 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum GoodsStatus {
 
+    /**
+     * 上线.
+     */
     ONLINE(101, "上线"),
+    /**
+     * 下线.
+     */
     OFFLINE(102, "下线"),
-    STOCK_OUT(103, "缺货")
-    ;
+    /**
+     * 缺货.
+     */
+    STOCK_OUT(103, "缺货");
 
     /**
      * 状态码.

@@ -1,12 +1,11 @@
 package net.arver.commerce.service;
 
+import java.util.List;
 import net.arver.commerce.account.TableId;
 import net.arver.commerce.goods.DeductGoodsInventory;
 import net.arver.commerce.goods.GoodsInfo;
 import net.arver.commerce.goods.SimpleGoodsInfo;
 import net.arver.commerce.vo.PageSimpleGoodsInfo;
-
-import java.util.List;
 
 /**
  * GoodsService.

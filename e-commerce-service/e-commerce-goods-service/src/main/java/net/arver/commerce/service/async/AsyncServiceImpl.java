@@ -1,20 +1,5 @@
 package net.arver.commerce.service.async;
 
-import lombok.extern.slf4j.Slf4j;
-import net.arver.commerce.constant.GoodsConstant;
-import net.arver.commerce.dao.GoodsDao;
-import net.arver.commerce.entity.Goods;
-import net.arver.commerce.goods.GoodsInfo;
-import net.arver.commerce.goods.SimpleGoodsInfo;
-import net.arver.commerce.util.JsonUtil;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.time.StopWatch;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +7,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import net.arver.commerce.constant.GoodsConstant;
+import net.arver.commerce.dao.GoodsDao;
+import net.arver.commerce.entity.Goods;
+import net.arver.commerce.goods.GoodsInfo;
+import net.arver.commerce.util.JsonUtil;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.time.StopWatch;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 /**
  * AsyncServiceImpl.
@@ -32,7 +29,7 @@ import java.util.stream.Collectors;
  **/
 @Slf4j
 @Service
-public class AsyncServiceImpl implements AsyncService{
+public class AsyncServiceImpl implements AsyncService {
     private final GoodsDao goodsDao;
 
     private final StringRedisTemplate stringRedisTemplate;
@@ -47,8 +44,8 @@ public class AsyncServiceImpl implements AsyncService{
      * 异步任务处理两件事：
      * 1. 将商品信息保存到数据表
      * 2. 更新商品缓存
-     * @param goodsInfos
-     * @param taskId
+     * @param goodsInfos 商品信息
+     * @param taskId 任务id
      */
     @Async("getAsyncExecutor")
     @Override
@@ -115,9 +112,9 @@ public class AsyncServiceImpl implements AsyncService{
     }
 
     /**
-     * 将保存到数据表中的数据缓存到 Redis 中。
-     * dict: key -> <id, SimpleGoodsInfo(json)>
-     * @param savedGoods
+     * 将保存到数据表中的数据缓存到 Redis 中.
+     * dict: key -> id, SimpleGoodsInfo(json)
+     * @param savedGoods 商品信息
      */
     private void saveNewGoodsInfoToRedis(final List<Goods> savedGoods) {
         final Map<String, String> id2JsonObject = savedGoods.stream()

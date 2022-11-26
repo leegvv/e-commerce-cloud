@@ -13,14 +13,14 @@ public interface BalanceService {
 
     /**
      * 获取当前用户余额信息.
-     * @return
+     * @return 余额
      */
     BalanceInfo getCurrentUserBalanceInfo();
 
     /**
-     * 扣减用户余额
+     * 扣减用户余额.
      * @param balanceInfo 代表想要扣减的余额
-     * @return
+     * @return 余额
      */
     BalanceInfo deductBalance(BalanceInfo balanceInfo);
 }

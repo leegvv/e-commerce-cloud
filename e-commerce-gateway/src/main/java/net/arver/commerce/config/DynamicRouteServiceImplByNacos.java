@@ -4,6 +4,10 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.Executor;
+import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.util.JsonUtil;
 import org.apache.commons.collections4.CollectionUtils;
@@ -11,11 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.Executor;
 
 /**
  * DynamicRouteServiceImplByNacos.
@@ -26,7 +25,7 @@ import java.util.concurrent.Executor;
  **/
 @Slf4j
 @Component
-@DependsOn({"gatewayConfig"})
+@DependsOn("gatewayConfig")
 public class DynamicRouteServiceImplByNacos {
 
     /**
@@ -41,12 +40,12 @@ public class DynamicRouteServiceImplByNacos {
     }
 
     /**
-     * Bean 在容器中构造完成之后会执行 init 方法
+     * Bean 在容器中构造完成之后会执行 init 方法.
      */
     @PostConstruct
     public void init() {
         log.info("gateway route init...");
-        try{
+        try {
             configService = initConfigService();
             if (configService == null) {
                 log.error("init config service fail");
@@ -80,14 +79,15 @@ public class DynamicRouteServiceImplByNacos {
 
     /**
      * 初始化配置服务.
-     * @return
+     * @return 配置服务
      */
     private ConfigService initConfigService() {
         try {
             final Properties properties = new Properties();
             properties.setProperty("serverAddr", GatewayConfig.NACOS_SERVER_ADDR);
             properties.setProperty("namespace", GatewayConfig.NACOS_NAMESPACE);
-            return configService  = NacosFactory.createConfigService(properties);
+            configService = NacosFactory.createConfigService(properties);
+            return configService;
         } catch (final Exception e) {
             log.error("init gateway nacos config error: [{}]", e.getMessage(), e);
             return null;
@@ -95,13 +95,13 @@ public class DynamicRouteServiceImplByNacos {
     }
 
     private void dynamicRouteByNacosListener(final String dataId, final String group) {
-        try{
+        try {
             // 给 Nacos Config 客户端增加一个监听器
             configService.addListener(dataId, group, new Listener() {
 
                 /**
                  * 自己提供线程池执行操作，不提供则使用默认的
-                 * @return
+                 * @return 线程池
                  */
                 @Override
                 public Executor getExecutor() {

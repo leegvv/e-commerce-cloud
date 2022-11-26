@@ -1,16 +1,15 @@
 package net.arver.commerce.service.async;
 
-import lombok.extern.slf4j.Slf4j;
-import net.arver.commerce.constant.AsyncTaskStatusEnum;
-import net.arver.commerce.goods.GoodsInfo;
-import net.arver.commerce.vo.AsyncTaskInfo;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
+import net.arver.commerce.constant.AsyncTaskStatusEnum;
+import net.arver.commerce.goods.GoodsInfo;
+import net.arver.commerce.vo.AsyncTaskInfo;
+import org.springframework.stereotype.Component;
 
 /**
  * 异步任务执行管理器.

@@ -3,37 +3,20 @@ package net.arver.commerce.filter;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.constant.CommonConstant;
 import net.arver.commerce.constant.GatewayConstant;
-import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.util.TokenUtil;
-import net.arver.commerce.vo.JwtToken;
 import net.arver.commerce.vo.LoginUserInfo;
-import net.arver.commerce.vo.UsernameAndPassword;
-import org.reactivestreams.Publisher;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.cloud.client.loadbalancer.Response;
-import org.springframework.cloud.client.loadbalancer.reactive.ReactiveLoadBalancer;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
 import org.springframework.core.Ordered;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.DataBufferUtils;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.nio.CharBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * GlobalLoginOrRegisterFilter.
@@ -58,8 +41,8 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
 
     /**
      * 构造函数.
-     * @param clientFactory
-     * @param restTemplate
+     * @param clientFactory 注册中心客户端工厂
+     * @param restTemplate restTemplate
      */
     public GlobalLoginOrRegisterFilter(final LoadBalancerClientFactory clientFactory, final RestTemplate restTemplate) {
         this.clientFactory = clientFactory;
@@ -67,11 +50,11 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
     }
 
     /**
-     * 登陆、注册、授权。
+     * 登陆、注册、授权.
      *
      * @param exchange the current server exchange
      * @param chain provides a way to delegate to the next filter
-     * @return
+     * @return 过滤器
      */
     @Override
     public Mono<Void> filter(final ServerWebExchange exchange, final GatewayFilterChain chain) {

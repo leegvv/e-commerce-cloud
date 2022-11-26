@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * @version 1.0.0.0
  * Description:
  **/
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @EnableJpaAuditing //允许 jpa 自动审计
 @EnableDiscoveryClient
 @SpringBootApplication

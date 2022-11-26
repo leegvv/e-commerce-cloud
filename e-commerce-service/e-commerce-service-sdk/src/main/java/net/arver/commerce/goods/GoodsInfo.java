@@ -1,10 +1,9 @@
 package net.arver.commerce.goods;
 
+import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.sql.Timestamp;
 
 /**
  * GoodsInfo.

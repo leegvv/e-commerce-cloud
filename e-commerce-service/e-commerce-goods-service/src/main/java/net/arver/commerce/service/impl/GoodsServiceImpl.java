@@ -1,6 +1,14 @@
 package net.arver.commerce.service.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.account.TableId;
 import net.arver.commerce.constant.GoodsConstant;
@@ -19,11 +27,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * GoodsServiceImpl.
@@ -61,7 +64,7 @@ public class GoodsServiceImpl implements GoodsService {
         if (pageNo <= 1) {
             pageNo = 1;
         }
-        final Pageable pageable = PageRequest.of(pageNo -1, 10, Sort.by("id").descending());
+        final Pageable pageable = PageRequest.of(pageNo - 1, 10, Sort.by("id").descending());
         final Page<Goods> pageData = goodsDao.findAll(pageable);
 
         // 是否还有更多页

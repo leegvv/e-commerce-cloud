@@ -16,12 +16,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * @version 1.0.0.0
  * Description:
  **/
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @OpenAPIDefinition(
         info = @Info(
                 title = "商品服务",
                 version = "1.0",
                 description = "商品服务API接口信息",
-                contact = @Contact(name="arver"),
+                contact = @Contact(name = "arver"),
                 termsOfService = "http://arver/goods/**",
                 license = @License(name = "1.0")
         )

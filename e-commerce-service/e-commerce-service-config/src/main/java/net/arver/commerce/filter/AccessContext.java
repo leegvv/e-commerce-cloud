@@ -12,11 +12,16 @@ import net.arver.commerce.vo.LoginUserInfo;
  * @version 1.0.0.0
  * Description:
  **/
-public class AccessContext {
+public final class AccessContext {
+
+    /**
+     * 构造函数.
+     */
+    private AccessContext() {}
 
     private static final ThreadLocal<LoginUserInfo> LOGIN_USER_INFO = new ThreadLocal<>();
 
-    public static LoginUserInfo get(){
+    public static LoginUserInfo get() {
         return LOGIN_USER_INFO.get();
     }
 

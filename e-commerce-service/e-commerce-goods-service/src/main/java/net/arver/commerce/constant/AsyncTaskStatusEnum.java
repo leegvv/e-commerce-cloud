@@ -14,11 +14,22 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum AsyncTaskStatusEnum {
 
+    /**
+     * 已经启动.
+     */
     STARTED(0, "已经启动"),
+    /**
+     * 正在运行.
+     */
     RUNNING(1, "正在运行"),
+    /**
+     * 执行成功.
+     */
     SUCCESS(2, "执行成功"),
-    FAILED(3, "执行失败"),
-    ;
+    /**
+     * 执行失败.
+     */
+    FAILED(3, "执行失败");
 
     /**
      * 执行状态编码.

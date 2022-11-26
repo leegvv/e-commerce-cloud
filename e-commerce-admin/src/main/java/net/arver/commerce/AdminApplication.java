@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0.0.0
  * Description:
  **/
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @EnableAdminServer
 @SpringBootApplication
 public class AdminApplication {

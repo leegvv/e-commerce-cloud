@@ -1,10 +1,9 @@
 package net.arver.commerce.account;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * 通用 id 对象.
@@ -24,7 +23,7 @@ public class TableId {
     private List<Id> ids;
 
     /**
-     * 数据表记录主键对象
+     * 数据表记录主键对象.
      */
     @Data
     @NoArgsConstructor

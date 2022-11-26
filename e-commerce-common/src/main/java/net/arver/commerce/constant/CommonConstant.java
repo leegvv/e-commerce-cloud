@@ -7,7 +7,12 @@ package net.arver.commerce.constant;
  * @version 1.0.0.0
  * Description:
  **/
-public class CommonConstant {
+public final class CommonConstant {
+
+    /**
+     * 构造函数.
+     */
+    private CommonConstant() {}
 
     /**
      * RSA 公钥.
@@ -18,6 +23,9 @@ public class CommonConstant {
             "4eFHnlM2nHNA2G7ZYtj+SXgFHLAsEuGPqIct3vMZzE2y5Kz4QO8Vq9CsbUS8b+gStRRb/9ZW2n5F5Mkp21H/SgVvL0VxXS+VsNyzIZdt" +
             "7IwIDAQAB";
 
+    /**
+     * jwt key.
+     */
     public static final String JWT_USER_INFO_KEY = "e-commerce-user";
 
 }

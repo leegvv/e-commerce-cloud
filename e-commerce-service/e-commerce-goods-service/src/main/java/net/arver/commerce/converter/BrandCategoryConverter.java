@@ -1,8 +1,7 @@
 package net.arver.commerce.converter;
 
-import net.arver.commerce.constant.BrandCategory;
-
 import javax.persistence.AttributeConverter;
+import net.arver.commerce.constant.BrandCategory;
 
 /**
  * BrandCategoryConverter.

@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @version 1.0.0.0
  * Description:
  **/
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class GatewayApplication {

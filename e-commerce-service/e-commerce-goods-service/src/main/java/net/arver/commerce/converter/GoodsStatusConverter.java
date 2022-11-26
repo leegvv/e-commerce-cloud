@@ -1,8 +1,7 @@
 package net.arver.commerce.converter;
 
-import net.arver.commerce.constant.GoodsStatus;
-
 import javax.persistence.AttributeConverter;
+import net.arver.commerce.constant.GoodsStatus;
 
 /**
  * 商品状态枚举属性转换器.

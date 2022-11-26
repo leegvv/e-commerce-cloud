@@ -1,6 +1,5 @@
 package net.arver.commerce.filter;
 
-import net.arver.commerce.config.GatewayConfig;
 import net.arver.commerce.constant.GatewayConstant;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -43,7 +42,7 @@ public class GlobalCacheRequestBodyFilter implements GlobalFilter, Ordered {
             final Flux<DataBuffer> cachedFlux = Flux.defer(() ->
                     Flux.just(dataBuffer.slice(0, dataBuffer.readableByteCount())));
             // 重新包装 ServerHttpRequest，重写 getBody 方法， 能够返回请求数据
-            final ServerHttpRequest mutatedRequest = new ServerHttpRequestDecorator(exchange.getRequest()){
+            final ServerHttpRequest mutatedRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
                 @Override
                 public Flux<DataBuffer> getBody() {
                     return cachedFlux;

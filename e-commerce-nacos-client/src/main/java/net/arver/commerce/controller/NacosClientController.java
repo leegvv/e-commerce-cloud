@@ -1,5 +1,6 @@
 package net.arver.commerce.controller;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.service.NacosClientService;
 import org.springframework.cloud.client.ServiceInstance;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * NacosClientController.
@@ -29,9 +28,9 @@ public class NacosClientController {
     }
 
     /**
-     * 根据service id 获取服务所有的实例信息
-     * @param serviceId
-     * @return
+     * 根据service id 获取服务所有的实例信息.
+     * @param serviceId 服务名称
+     * @return 服务实例列表
      */
     @GetMapping("/service-instance")
     public List<ServiceInstance> logNacosClientInfo(

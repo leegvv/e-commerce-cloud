@@ -1,10 +1,9 @@
 package net.arver.commerce.constant;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.util.Objects;
 import java.util.stream.Stream;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * 品牌分类.
@@ -17,12 +16,26 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum BrandCategory {
 
+    /**
+     * 品牌 A.
+     */
     BRAND_A("20001", "品牌 A"),
+    /**
+     * 品牌 B.
+     */
     BRAND_B("20002", "品牌 B"),
+    /**
+     * 品牌 C.
+     */
     BRAND_C("20003", "品牌 C"),
+    /**
+     * 品牌 D.
+     */
     BRAND_D("20004", "品牌 D"),
-    BRAND_E("20005", "品牌 E"),
-    ;
+    /**
+     * 品牌 E.
+     */
+    BRAND_E("20005", "品牌 E");
 
     /**
      * 品牌分类编码.
@@ -39,6 +52,6 @@ public enum BrandCategory {
         return Stream.of(values())
                 .filter(item -> item.code.equals(code))
                 .findAny()
-                .orElseThrow(() ->new IllegalArgumentException(code + " not exists"));
+                .orElseThrow(() -> new IllegalArgumentException(code + " not exists"));
     }
 }

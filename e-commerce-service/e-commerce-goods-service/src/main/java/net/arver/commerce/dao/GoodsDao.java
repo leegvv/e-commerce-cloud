@@ -1,11 +1,10 @@
 package net.arver.commerce.dao;
 
+import java.util.Optional;
 import net.arver.commerce.constant.BrandCategory;
 import net.arver.commerce.constant.GoodsCategory;
 import net.arver.commerce.entity.Goods;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 /**
  * GoodsDao.

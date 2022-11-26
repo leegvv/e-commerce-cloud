@@ -1,11 +1,10 @@
 package net.arver.commerce.vo;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.arver.commerce.goods.SimpleGoodsInfo;
-
-import java.util.List;
 
 /**
  * PageSimpleGoodsInfo.
@@ -25,7 +24,7 @@ public class PageSimpleGoodsInfo {
     private List<SimpleGoodsInfo> simpleGoodsInfos;
 
     /**
-     * 是否有更多的商品（分页）
+     * 是否有更多的商品（分页）.
      */
     private Boolean hasMore;
 }

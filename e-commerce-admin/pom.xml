@@ -50,6 +50,39 @@
         <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>checkstyle-validation</id>
+                        <phase>validate</phase>
+                        <inherited>true</inherited>
+                        <configuration>
+                            <skip>${disable.checks}</skip>
+                            <configLocation>${checkstyle.file}</configLocation>
+                            <headerLocation>${checkstyle.header.file}</headerLocation>
+                            <propertyExpansion>
+                                checkstyle.build.directory=${project.build.directory}
+                                checkstyle.suppressions.file=${checkstyle.suppressions.file}
+                            </propertyExpansion>
+                            <consoleOutput>true</consoleOutput>
+                            <includeTestSourceDirectory>
+                                ${maven-checkstyle-plugin.includeTestSourceDirectory}
+                            </includeTestSourceDirectory>
+                            <failsOnError>
+                                ${maven-checkstyle-plugin.failsOnError}
+                            </failsOnError>
+                            <failOnViolation>
+                                ${maven-checkstyle-plugin.failOnViolation}
+                            </failOnViolation>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>

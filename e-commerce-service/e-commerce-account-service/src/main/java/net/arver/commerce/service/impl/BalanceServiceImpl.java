@@ -1,5 +1,6 @@
 package net.arver.commerce.service.impl;
 
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.account.BalanceInfo;
 import net.arver.commerce.dao.BalanceDao;
@@ -9,8 +10,6 @@ import net.arver.commerce.filter.AccessContext;
 import net.arver.commerce.service.BalanceService;
 import net.arver.commerce.vo.LoginUserInfo;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 /**
  * BalanceServiceImpl.

@@ -1,16 +1,13 @@
 package net.arver.commerce.util;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.InputStream;
-import java.util.List;
 
 /**
  * JsonUtil.
@@ -19,7 +16,7 @@ import java.util.List;
  * @version 1.0.0.0
  * Description:
  **/
-public class JsonUtil {
+public final class JsonUtil {
 
     /**
      * 日志.

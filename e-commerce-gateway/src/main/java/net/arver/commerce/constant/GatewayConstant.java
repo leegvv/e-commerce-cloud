@@ -7,7 +7,12 @@ package net.arver.commerce.constant;
  * @version 1.0.0.0
  * Description:
  **/
-public class GatewayConstant {
+public final class GatewayConstant {
+
+    /**
+     * 构造函数.
+     */
+    private GatewayConstant() {}
 
     /**
      * 登陆 uri.

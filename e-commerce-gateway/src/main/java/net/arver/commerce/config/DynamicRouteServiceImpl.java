@@ -1,5 +1,6 @@
 package net.arver.commerce.config;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
@@ -10,8 +11,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 /**
  * DynamicRouteServiceImpl.
@@ -26,8 +25,8 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     /**
      * 构造函数.
-     * @param routeDefinitionWriter
-     * @param routeDefinitionLocator
+     * @param routeDefinitionWriter 写路由定义
+     * @param routeDefinitionLocator 读路由定义
      */
     public DynamicRouteServiceImpl(final RouteDefinitionWriter routeDefinitionWriter,
                                    final RouteDefinitionLocator routeDefinitionLocator) {
@@ -41,7 +40,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     private final RouteDefinitionWriter routeDefinitionWriter;
 
     /**
-     * 回去路由定义.
+     * 读路由定义.
      */
     private final RouteDefinitionLocator routeDefinitionLocator;
 
@@ -58,8 +57,8 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     /**
      * 增加路由定义.
-     * @param routeDefinition
-     * @return
+     * @param routeDefinition 路由定义
+     * @return 操作结果
      */
     public String addRouteDefinition(final RouteDefinition routeDefinition) {
         log.info("gateway add route: [{}]", routeDefinition);
@@ -88,9 +87,9 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     }
 
     /**
-     * 根据 id 删除路由定义
-     * @param id
-     * @return
+     * 根据 id 删除路由定义.
+     * @param id id
+     * @return 操作结果
      */
     private String deleteById(final String id) {
         try {
@@ -106,9 +105,9 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     }
 
     /**
-     * 更新路由定义
-     * @param definition
-     * @return
+     * 更新路由定义.
+     * @param definition 路由定义
+     * @return 操作结果
      */
     private String updateByRouteDefinition(final RouteDefinition definition) {
         try {

@@ -1,5 +1,8 @@
 package net.arver.commerce.config;
 
+import java.lang.reflect.Method;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadPoolExecutor;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.util.JsonUtil;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
@@ -8,10 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import java.lang.reflect.Method;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * AsyncPoolConfig.
@@ -49,8 +48,8 @@ public class AsyncPoolConfig implements AsyncConfigurer {
     }
 
     /**
-     * 指定异步任务出现异常时使用到的处理器
-     * @return
+     * 指定异步任务出现异常时使用到的处理器.
+     * @return 处理器
      */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {

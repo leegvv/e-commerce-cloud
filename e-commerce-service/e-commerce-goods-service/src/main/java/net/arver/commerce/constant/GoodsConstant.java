@@ -7,7 +7,12 @@ package net.arver.commerce.constant;
  * @version 1.0.0.0
  * Description:
  **/
-public class GoodsConstant {
+public final class GoodsConstant {
+
+    /**
+     * 构造函数.
+     */
+    private GoodsConstant() {}
 
     /**
      * redis key.

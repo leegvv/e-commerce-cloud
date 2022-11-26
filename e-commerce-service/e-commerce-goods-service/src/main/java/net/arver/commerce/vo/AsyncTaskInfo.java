@@ -1,11 +1,10 @@
 package net.arver.commerce.vo;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.arver.commerce.constant.AsyncTaskStatusEnum;
-
-import java.util.Date;
 
 /**
  * AsyncTaskInfo.

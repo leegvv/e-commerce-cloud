@@ -7,7 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.account.AddressInfo;
 import net.arver.commerce.account.TableId;
 import net.arver.commerce.service.AddressService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * AddressController.
@@ -40,7 +45,7 @@ public class AddressController {
         return addressService.getCurrentAddressInfo();
     }
 
-    @Parameter(name = "id",description = "主键",required = true)
+    @Parameter(name = "id", description = "主键", required = true)
     @Operation(summary = "根据id获取地址信息")
     @GetMapping("/address-info")
     public AddressInfo getAddressInfo(@RequestParam final Long id) {

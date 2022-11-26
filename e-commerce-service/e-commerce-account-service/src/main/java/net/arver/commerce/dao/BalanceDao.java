@@ -14,8 +14,8 @@ public interface BalanceDao extends JpaRepository<Balance, Long> {
 
     /**
      * 根据用户 id 查询账户余额.
-     * @param userId
-     * @return
+     * @param userId 用户id
+     * @return 金额
      */
     Balance findByUserId(Long userId);
 }

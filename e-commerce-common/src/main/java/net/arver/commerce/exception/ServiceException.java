@@ -7,8 +7,9 @@ package net.arver.commerce.exception;
  * @version 1.0.0.0
  * Description:
  **/
-public class ServiceException extends RuntimeException{
+public class ServiceException extends RuntimeException {
 
+    @SuppressWarnings("checkstyle:MutableException")
     private String msg;
 
     public ServiceException(final String msg) {

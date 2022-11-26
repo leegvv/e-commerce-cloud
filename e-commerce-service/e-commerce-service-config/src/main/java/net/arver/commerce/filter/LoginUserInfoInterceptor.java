@@ -1,17 +1,15 @@
 package net.arver.commerce.filter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.constant.CommonConstant;
-import net.arver.commerce.exception.ServiceException;
 import net.arver.commerce.util.TokenUtil;
 import net.arver.commerce.vo.LoginUserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * LoginUserInfoInterceptor.
@@ -57,24 +55,23 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
     }
 
     /**
-     * 请求完成接受后调用，常用于清理资源工作
-     * @param request
-     * @param response
-     * @param handler
-     * @param ex
-     * @throws Exception
+     * 请求完成接受后调用，常用于清理资源工作.
+     * @param request 请求
+     * @param response 响应
+     * @param handler 处理器
+     * @param ex 异常
      */
     @Override
-    public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex) throws Exception {
+    public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex) {
         if (AccessContext.get() != null) {
             AccessContext.remove();
         }
     }
 
     /**
-     * 校验是否是白名单接口
-     * @param url
-     * @return
+     * 校验是否是白名单接口.
+     * @param url url
+     * @return 是否是白名单接口
      */
     private boolean checkWhiteList(final String url) {
         return StringUtils.containsAny(url, "springfox", "swagger", "v2", "webjars", "doc.html");

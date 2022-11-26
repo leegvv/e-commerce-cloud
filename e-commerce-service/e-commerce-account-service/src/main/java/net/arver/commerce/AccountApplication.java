@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
@@ -17,12 +16,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * @version 1.0.0.0
  * Description:
  **/
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @OpenAPIDefinition(
         info = @Info(
                 title = "账户服务",
                 version = "1.0",
                 description = "账户服务API接口信息",
-                contact = @Contact(name="arver"),
+                contact = @Contact(name = "arver"),
                 termsOfService = "http://arver/account/**",
                 license = @License(name = "1.0")
         )
@@ -32,6 +32,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class AccountApplication {
 
+    /**
+     * 启动入口.
+     * @param args 参数
+     */
     public static void main(String[] args) {
         SpringApplication.run(AccountApplication.class, args);
     }

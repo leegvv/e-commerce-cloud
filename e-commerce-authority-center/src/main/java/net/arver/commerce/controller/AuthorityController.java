@@ -33,10 +33,10 @@ public class AuthorityController {
     }
 
     /**
-     * 从授权中心获取 Token (登陆认证)
-     * @param usernameAndPassword
-     * @return
-     * @throws Exception
+     * 从授权中心获取 Token (登陆认证).
+     * @param usernameAndPassword 用户信息
+     * @return token
+     * @throws Exception 异常
      */
     @IgnoreResponseAdvice
     @PostMapping("/token")
@@ -47,9 +47,9 @@ public class AuthorityController {
 
     /**
      * 注册并返回当前注册用户的 Token.
-     * @param usernameAndPassword
-     * @return
-     * @throws Exception
+     * @param usernameAndPassword 用户信息
+     * @return token
+     * @throws Exception 异常
      */
     @IgnoreResponseAdvice
     @PostMapping("/register")

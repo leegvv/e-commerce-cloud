@@ -7,10 +7,15 @@ package net.arver.commerce.constant;
  * @version 1.0.0.0
  * Description:
  **/
-public class AuthorityConstant {
+public final class AuthorityConstant {
 
     /**
-     * RSA 私钥， 除了授权中心以外，不暴露给任何客户端
+     * 构造函数.
+     */
+    private AuthorityConstant() {}
+
+    /**
+     * RSA 私钥， 除了授权中心以外，不暴露给任何客户端.
      */
     public static final String PRIVATE_KEY = "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC+BVU4Bi1I1K/vC/Sqe" +
             "Hs5Rhy2svaT+KDnIY2L5G/t54HiFlRHF1GUxd+tNH2V/ov8aGzA7mw121dogomwJRcdMkw4iYC7K63x2u84nog7Ts/eDbNnO72LrTj" +

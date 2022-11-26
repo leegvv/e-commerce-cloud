@@ -12,7 +12,7 @@ import net.arver.commerce.vo.UsernameAndPassword;
 public interface JWTService {
 
     /**
-     * 生成 JWT Token,使用默认的超时时间
+     * 生成 JWT Token,使用默认的超时时间.
      * @param username 用户名
      * @param password 密码
      * @return token
@@ -20,7 +20,7 @@ public interface JWTService {
     String generateToken(String username, String password) throws Exception;
 
     /**
-     * 生成 JWT Token,使用指定的超时时间
+     * 生成 JWT Token,使用指定的超时时间.
      * @param username 用户名
      * @param password 密码
      * @param expire 超时时间
@@ -29,9 +29,9 @@ public interface JWTService {
     String generateToken(String username, String password, int expire) throws Exception;
 
     /**
-     * 注册用户并生成 Token 返回
-     * @param usernameAndPassword
-     * @return
+     * 注册用户并生成 Token 返回.
+     * @param usernameAndPassword 用户信息
+     * @return 状态
      */
     String registerUserAndGenerateToken(UsernameAndPassword usernameAndPassword) throws Exception;
 }

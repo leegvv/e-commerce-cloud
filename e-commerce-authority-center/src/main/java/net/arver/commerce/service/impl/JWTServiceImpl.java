@@ -2,6 +2,16 @@ package net.arver.commerce.service.impl;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Base64;
+import java.util.Date;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.constant.AuthorityConstant;
 import net.arver.commerce.constant.CommonConstant;
@@ -13,17 +23,6 @@ import net.arver.commerce.vo.LoginUserInfo;
 import net.arver.commerce.vo.UsernameAndPassword;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.misc.BASE64Decoder;
-
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.UUID;
 
 /**
  * JWT 相关服务接口实现.
@@ -102,13 +101,14 @@ public class JWTServiceImpl implements JWTService {
     }
 
     /**
-     * 根据本地存储的私钥获取到 PrivateKey 对象
-     * @return
-     * @throws Exception
+     * 根据本地存储的私钥获取到 PrivateKey 对象.
+     * @return 私钥
+     * @throws Exception 异常
      */
     private PrivateKey getPrivateKey() throws Exception {
         final PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(
-                new BASE64Decoder().decodeBuffer(AuthorityConstant.PRIVATE_KEY));
+                Base64.getDecoder().decode(AuthorityConstant.PRIVATE_KEY)
+        );
         final KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         return keyFactory.generatePrivate(priPKCS8);
     }

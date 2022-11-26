@@ -1,8 +1,7 @@
 package net.arver.commerce.service.async;
 
-import net.arver.commerce.goods.GoodsInfo;
-
 import java.util.List;
+import net.arver.commerce.goods.GoodsInfo;
 
 /**
  * AsyncService.
@@ -15,8 +14,8 @@ public interface AsyncService {
 
     /**
      * 异步保存商品信息.
-     * @param goodsInfos
-     * @param taskId
+     * @param goodsInfos 商品信息
+     * @param taskId 任务id
      */
     void asyncImportGoods(List<GoodsInfo> goodsInfos, String taskId);
 }

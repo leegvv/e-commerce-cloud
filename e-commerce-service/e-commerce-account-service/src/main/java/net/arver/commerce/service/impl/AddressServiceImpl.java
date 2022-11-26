@@ -1,5 +1,9 @@
 package net.arver.commerce.service.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.account.AddressInfo;
 import net.arver.commerce.account.TableId;
@@ -12,11 +16,6 @@ import net.arver.commerce.util.JsonUtil;
 import net.arver.commerce.vo.LoginUserInfo;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * AddressServiceImpl.

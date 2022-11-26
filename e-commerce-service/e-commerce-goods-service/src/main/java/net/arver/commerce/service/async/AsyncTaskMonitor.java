@@ -1,15 +1,13 @@
 package net.arver.commerce.service.async;
 
+import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import net.arver.commerce.constant.AsyncTaskStatusEnum;
 import net.arver.commerce.vo.AsyncTaskInfo;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * 异步任务执行切面监控.
